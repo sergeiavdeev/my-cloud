@@ -11,6 +11,8 @@ import io.netty.handler.codec.string.StringEncoder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.nio.charset.Charset;
+
 public class Application {
 
     private static final Logger logger = LogManager.getLogger(Application.class);
@@ -34,8 +36,9 @@ public class Application {
                         public void initChannel(SocketChannel ch)
                                 throws Exception {
                             ch.pipeline().addLast(
-                                    new StringEncoder(),
-                                    new StringDecoder(),
+                                    new StringEncoder(Charset.forName("utf-8")),
+                                    new StringDecoder(Charset.forName("utf-8")),
+                                    new AuthHandler(),
                                     new FileTransferHandler());
                         }
                     }).option(ChannelOption.SO_BACKLOG, 128)
