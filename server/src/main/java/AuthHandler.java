@@ -1,21 +1,11 @@
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.util.ReferenceCountUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.nio.charset.Charset;
-
-public class FileTransferHandler extends ChannelInboundHandlerAdapter {
+public class AuthHandler extends ChannelInboundHandlerAdapter {
 
     private final Logger log = LogManager.getLogger(FileTransferHandler.class);
-    @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-
-        log.info("Channel read: " + msg);
-        ctx.channel().writeAndFlush("OK\n");
-    }
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
@@ -26,4 +16,15 @@ public class FileTransferHandler extends ChannelInboundHandlerAdapter {
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         log.info("Handler removed");
     }
+
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        log.info(msg);
+        String in  = (String) msg;
+        if (in.startsWith("auth")) {
+            ctx.fireChannelRead(msg);
+        }
+    }
+
+
 }
