@@ -4,6 +4,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import repository.UserRepository;
 
 import java.nio.charset.Charset;
 
@@ -19,6 +20,7 @@ public class FileTransferHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        UserRepository repo = new UserRepository();
         log.info("Handler added");
     }
 
