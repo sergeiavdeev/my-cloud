@@ -6,8 +6,8 @@ import java.io.RandomAccessFile;
 
 public class FileResponse {
 
-    private RandomAccessFile file;
-    private HttpResponse response;
+    private final RandomAccessFile file;
+    private final HttpResponse response;
 
     public FileResponse(RandomAccessFile file, HttpResponse response) {
         this.file = file;
@@ -18,15 +18,10 @@ public class FileResponse {
         return file;
     }
 
-    public void setFile(RandomAccessFile file) {
-        this.file = file;
-    }
 
     public HttpResponse getResponse() {
         return response;
     }
 
-    public void setResponse(HttpResponse response) {
-        this.response = response;
-    }
+
 }
