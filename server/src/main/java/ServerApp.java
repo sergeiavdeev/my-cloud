@@ -1,3 +1,5 @@
+import Handlers.AuthHandler;
+import Handlers.FileHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -6,19 +8,13 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
-import io.netty.handler.codec.json.JsonObjectDecoder;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
-import io.netty.handler.stream.ChunkedWriteHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import utils.Config;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 
 public class ServerApp {
 
@@ -41,10 +37,11 @@ public class ServerApp {
                         public void initChannel(SocketChannel ch) {
                             ch.pipeline().addLast(
                                     new HttpServerCodec(),
-                                    new HttpObjectAggregator(65536),
-                                    new ChunkedWriteHandler(),
+                                    //new HttpObjectAggregator(65536),
+                                    //new ChunkedWriteHandler(),
                                     new AuthHandler(),
-                                    new FileTransferHandler());
+                                    //new FileTransferHandler());
+                                    new FileHandler());
                         }
                     }).option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);

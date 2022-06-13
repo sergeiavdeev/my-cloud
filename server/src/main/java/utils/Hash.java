@@ -1,6 +1,7 @@
 package utils;
 
 import java.security.MessageDigest;
+import java.util.UUID;
 
 public class Hash {
 
@@ -23,5 +24,9 @@ public class Hash {
             e.printStackTrace();
         }
         return sb.toString();
+    }
+
+    public static String uuid() {
+        return UUID.randomUUID().toString();
     }
 }

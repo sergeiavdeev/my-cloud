@@ -26,10 +26,13 @@ public class User {
         this.name = name;
         this.email = email;
         this.isActive = true;
+        this.uuid = "";
     }
 
     public User(User user) {
 
+        login = user.getLogin();
+        password = user.getPassword();
         uuid = user.getUuid();
         name = user.getName();
         email = user.getEmail();
@@ -41,6 +44,8 @@ public class User {
         this.name = name;
         this.email = email;
         this.isActive = isActive;
+        this.login = "";
+        this.password = "";
     }
 
     public String getUuid() {
