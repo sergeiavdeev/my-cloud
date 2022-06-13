@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "d8f8f589-8624-41a0-8ca4-7e6a4be4038b",
+		"name": "My Cloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10481773"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "kjhfdglkhdfg",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Connection",
+						"value": "keep",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"admin\",\n    \"password\": \"admin\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Directory list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NmE0NDlmYi05NTEyLTRhMjgtODU4YS1lNjBiOGUwNTk5OGMifQ.8a-lz715dqjylpC9hFDlzZ9brdBcL2aSp5LN6PXNv8WldIcK6GzYu3c7im2qze1ySHUGSb0wvct_va7xbmjVpQ",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "1dce5c20-662a-44d4-90ef-b1f431e06031",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/files?list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"files"
+					],
+					"query": [
+						{
+							"key": "list",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download file",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxZGNlNWMyMC02NjJhLTQ0ZDQtOTBlZi1iMWY0MzFlMDYwMzEifQ.20Wtfu9Xh0KSdvEziIwOhNC1xPDlr88sm1p8rSC5xsVCFVVaQ5UcsoGDa6321Mmo0EUDoJ0ffU4rUbUuORSORg",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "1dce5c20-662a-44d4-90ef-b1f431e06031",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/temp/?file=dump.txt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"temp",
+						""
+					],
+					"query": [
+						{
+							"key": "file",
+							"value": "dump.txt"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Directory create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxZGNlNWMyMC02NjJhLTQ0ZDQtOTBlZi1iMWY0MzFlMDYwMzEifQ.20Wtfu9Xh0KSdvEziIwOhNC1xPDlr88sm1p8rSC5xsVCFVVaQ5UcsoGDa6321Mmo0EUDoJ0ffU4rUbUuORSORg",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "1dce5c20-662a-44d4-90ef-b1f431e06031",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/files/22/333",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"files",
+						"22",
+						"333"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload file",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Transfer-Encoding",
+						"value": "chunked",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "userId",
+						"value": "1dce5c20-662a-44d4-90ef-b1f431e06031",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/serg/Загрузки/Telegram Desktop/LeroyMerlin_ExtDeliveryCompany.docx"
+						},
+						{
+							"key": "name\n",
+							"value": "ОСАГО 2021.pdf",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"files"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
